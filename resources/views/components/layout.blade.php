@@ -10,9 +10,9 @@
 <body>
     <header>
         <nav>
-            <h1>User Network</h1>
-            <a href="/users">All users</a>
-            <a href="/users/create">Create new user</a>
+            <h1><a href="/">User Network</a></h1>
+            <a href="{{ route('users.index') }}">All users</a>
+            <a href="{{ route('users.create') }}">Create new user</a>
         </nav>
     </header>
 
