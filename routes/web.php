@@ -13,3 +13,6 @@ Route::get("/users/create", [UserController::class, 'create'])->name("users.crea
 
 Route::get("/users/{id}", [UserController::class, 'show'])->name("users.show");
 
+Route::post("/users", [UserController::class, 'store'])->name("users.store");
+
+Route::delete("/users/{id}", [UserController::class, 'destroy'])->name("users.destroy");

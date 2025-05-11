@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Company;
 
 class UserController extends Controller
 {
@@ -20,14 +21,28 @@ class UserController extends Controller
     }
 
     public function create() {
-        return view("users.create");
+        $companies = Company::all();
+
+        return view("users.create", ['companies' => $companies]);
     }
 
-    public function store() {
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'skill' => 'required|integer|min:0|max:100',
+            'bio' => 'required|string|min:20|max:1000',
+            'company_id' => 'required|exists:companies,id',
+        ]);
 
+        User::create($validated);
+
+        return redirect()->route('users.index');
     }
 
     public function destroy($id) {
+        $user = User::findOrFail($id);
+        $user->delete();
 
+        return redirect()->route('users.index');
     }
 }
