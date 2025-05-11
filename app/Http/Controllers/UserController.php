@@ -14,8 +14,8 @@ class UserController extends Controller
         return view('users.index', ["users" => $users]);
     }
 
-    public function show($id) {
-        $user = User::with('company')->findOrFail($id);
+    public function show(User $user) {
+        $user->load('company');
 
         return view("users.show", ["user" => $user]);
     }
@@ -36,13 +36,12 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User created!');
     }
 
-    public function destroy($id) {
-        $user = User::findOrFail($id);
+    public function destroy(User $user) {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User deleted!');
     }
 }
