@@ -6,4 +6,12 @@
         <p><strong>About me:</strong></p>
         <p>{{ $user->bio }}</p>
     </div>
+
+    <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
+        <h3>Company Information</h3>
+        <p><strong>Company name:</strong> {{ $user->company->title }}</p>
+        <p><strong>Location:</strong> {{ $user->company->location }}</p>
+        <p><strong>About the company:</strong></p>
+        <p>{{ $user->company->description }}</p>
+      </div>
 </x-layout>
