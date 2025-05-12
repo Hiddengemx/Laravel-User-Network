@@ -16,9 +16,21 @@
 
     <header>
         <nav>
-            <h1><a href="/">User Network</a></h1>
-            <a href="{{ route('users.index') }}">All users</a>
+            <h1><a href="{{ route('users.index') }}">User Network</a></h1>
+            @guest
+                <a href="{{ route('show.login') }}" class="btn">Login</a>
+                <a href="{{ route('show.register') }}" class="btn">Register</a>
+            @endguest
+
+            @auth
+            <span class="border-r-2 pr-2 text-red-500">{{ Auth::user()->name }}</span>
             <a href="{{ route('users.create') }}">Create new user</a>
+            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                @csrf
+                <button class="btn hover:cursor-pointer">Logout</button>
+            </form>
+            @endauth
+
         </nav>
     </header>
 

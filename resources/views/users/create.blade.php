@@ -43,7 +43,7 @@
           @endforeach
         </select>
     
-        <button type="submit" class="btn mt-4">Create User</button>
+        <button type="submit" class="btn mt-4 hover:cursor-pointer">Create User</button>
 
         @if ($errors->any())
           <ul class="px-4 py-2 bg-red-100">
