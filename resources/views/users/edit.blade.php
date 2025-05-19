@@ -36,7 +36,6 @@
       
         <label for="company_id">Company:</label>
         <select id="company_id" class="border-1 rounded-[0.7vw] border-gray-500" name="company_id" required>
-          <option value="{{ $user->id }}" disabled selected>Select a company</option>
           @foreach ($companies as $company)
             <option value="{{ $company->id }}" {{$company->id == old("company_id") ? "selected" : ""}}>
                 {{ $company->title }}
