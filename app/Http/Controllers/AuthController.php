@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\AppUser;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showRegister()
+    public function showRegister(): View
     {
         return view('auth.register');
     }
 
-    public function showLogin()
+    public function showLogin(): View
     {
         return view('auth.login');
     }

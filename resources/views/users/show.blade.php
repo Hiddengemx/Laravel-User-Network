@@ -14,12 +14,13 @@
       <p><strong>About the Company:</strong></p>
       <p>{{ $user->company->description }}</p>
     </div>
-  
-    <form action="{{ route('users.destroy', $user) }}" method="POST">
-      @csrf
-      @method('DELETE')
-  
-      <button type="submit" class="btn my-4">Delete user</button>
-    </form>
-  
+    <div class="flex gap-x-5">
+      <button class="btn my-4"><a href="/users/{{ $user->id }}/edit">Edit User</a></button>
+      <form action="{{ route('users.destroy', $user) }}" method="POST">
+        @csrf
+        @method('DELETE')
+    
+        <button type="submit" class="btn my-4">Delete user</button>
+      </form>
+    </div>
 </x-layout>
